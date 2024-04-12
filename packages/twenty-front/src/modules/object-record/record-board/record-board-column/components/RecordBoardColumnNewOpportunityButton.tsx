@@ -7,6 +7,7 @@ import { CoreObjectNameSingular } from '@/object-metadata/types/CoreObjectNameSi
 import { RecordBoardContext } from '@/object-record/record-board/contexts/RecordBoardContext';
 import { RecordBoardColumnContext } from '@/object-record/record-board/record-board-column/contexts/RecordBoardColumnContext';
 import { SingleEntitySelect } from '@/object-record/relation-picker/components/SingleEntitySelect';
+import { useRelationPicker } from '@/object-record/relation-picker/hooks/useRelationPicker';
 import { EntityForSelect } from '@/object-record/relation-picker/types/EntityForSelect';
 import { RelationPickerHotkeyScope } from '@/object-record/relation-picker/types/RelationPickerHotkeyScope';
 import { usePreviousHotkeyScope } from '@/ui/utilities/hotkey/hooks/usePreviousHotkeyScope';
@@ -41,6 +42,10 @@ export const RecordBoardColumnNewOpportunityButton = () => {
     setHotkeyScopeAndMemorizePreviousScope,
   } = usePreviousHotkeyScope();
 
+  const { setRelationPickerSearchFilter } = useRelationPicker({
+    relationPickerScopeId: 'relation-picker',
+  });
+
   const handleEntitySelect = (company?: EntityForSelect) => {
     setIsCreatingCard(false);
     goBackToPreviousHotkeyScope();
@@ -48,6 +53,8 @@ export const RecordBoardColumnNewOpportunityButton = () => {
     if (!company) {
       return;
     }
+
+    setRelationPickerSearchFilter('');
 
     createOneRecord({
       name: company.name,

@@ -35,7 +35,7 @@ export type IconPickerProps = {
   variant?: IconButtonVariant;
   className?: string;
   disableBlur?: boolean;
-  takeControlOfCustomIcon?: boolean;
+  // takeControlOfCustomIcon?: boolean;
 };
 
 const StyledMenuIconItemsContainer = styled.div`
@@ -94,7 +94,7 @@ export const IconPicker = ({
   variant = 'secondary',
   disableBlur = false,
   className,
-  takeControlOfCustomIcon = false,
+  // takeControlOfCustomIcon = false,
 }: IconPickerProps) => {
   const [searchString, setSearchString] = useState('');
   const {
@@ -156,10 +156,16 @@ export const IconPicker = ({
   );
 
   const getIconForIconPicker = () => {
-    if (
-      !takeControlOfCustomIcon &&
-      (selectedIconKey === 'table' || selectedIconKey === 'kanban')
-    ) {
+    console.log('selectedIconKey: ', selectedIconKey);
+    // if (
+    //   !takeControlOfCustomIcon &&
+    //   (selectedIconKey === 'table' || selectedIconKey === 'kanban')
+    // ) {
+    //   return selectedIconKey === 'table' ? IconTable : IconLayoutKanban;
+    // }
+    // return selectedIconKey ? getIcon(selectedIconKey) : IconApps;
+
+    if (selectedIconKey === 'table' || selectedIconKey === 'kanban'){
       return selectedIconKey === 'table' ? IconTable : IconLayoutKanban;
     }
     return selectedIconKey ? getIcon(selectedIconKey) : IconApps;

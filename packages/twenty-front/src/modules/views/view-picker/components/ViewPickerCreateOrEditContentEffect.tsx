@@ -41,12 +41,20 @@ export const ViewPickerCreateOrEditContentEffect = () => {
 
   const { availableFieldsForKanban } = useGetAvailableFieldsForKanban();
 
+  // useEffect(() => {
+  //   console.log('first useEffect');
+  //   if(!isDefined(referenceView)) {
+  //     console.log('not defined: ', viewPickerSelectedIconState);
+  //   }
+  // }, [viewPickerSelectedIconState]);
+
   useEffect(() => {
     if (
       isDefined(referenceView) &&
       !viewPickerIsPersisting &&
       !viewPickerIsDirty
     ) {
+      console.log('second useEffect: ', referenceView.icon);
       setViewPickerSelectedIcon(referenceView.icon);
       setViewPickerInputName(referenceView.name);
       setViewPickerType(referenceView.type);

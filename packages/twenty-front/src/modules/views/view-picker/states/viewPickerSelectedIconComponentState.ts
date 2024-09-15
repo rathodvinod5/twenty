@@ -3,5 +3,5 @@ import { createComponentState } from '@/ui/utilities/state/component-state/utils
 export const viewPickerSelectedIconComponentState =
   createComponentState<string>({
     key: 'viewPickerSelectedIconComponentState',
-    defaultValue: '',
+    defaultValue: 'table',
   });
